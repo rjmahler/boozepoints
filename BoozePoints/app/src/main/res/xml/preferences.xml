@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <ListPreference
+        android:defaultValue="@string/volume_unit_default"
+        android:dialogTitle="Volume Units"
+        android:entries="@array/volume_units"
+        android:entryValues="@array/volume_entries"
+        android:key="pref_vol"
+        android:summary="@string/volume_summary"
+        android:title="Volume Units" />
+</PreferenceScreen>

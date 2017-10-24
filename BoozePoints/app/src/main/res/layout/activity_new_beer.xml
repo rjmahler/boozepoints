@@ -1,0 +1,203 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:fitsSystemWindows="true"
+    tools:context="com.joaquintech.boozepoints.gui.BeerDetailActivity"
+    tools:ignore="MergeRootFrame">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/logo" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/beer_name_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat">
+
+                <EditText
+                    android:id="@+id/textName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:hint="@string/hint_beer_name"
+                    android:inputType="textPersonName"
+                    android:maxLength="63"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight"
+                    android:textColorLink="@color/colorPrimaryLight"
+                    tools:backgroundTint="@color/colorPrimaryLight" />
+            </android.support.design.widget.TextInputLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/beer_location_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat">
+
+                <EditText
+                    android:id="@+id/textLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:hint="@string/hint_location"
+                    android:inputType="textPersonName"
+                    android:maxLength="48"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
+            </android.support.design.widget.TextInputLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/beer_ABV_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat">
+
+                <EditText
+                    android:id="@+id/textABV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:hint="@string/hint_abv"
+                    android:inputType="numberDecimal"
+                    android:maxLength="8"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
+            </android.support.design.widget.TextInputLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/beer_price_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat">
+
+                <EditText
+                    android:id="@+id/textPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:hint="@string/hint_price"
+                    android:inputType="numberDecimal"
+                    android:maxLength="9"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
+            </android.support.design.widget.TextInputLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/beer_size_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat">
+
+                <EditText
+                    android:id="@+id/textSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:hint="@string/hint_vol"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
+            </android.support.design.widget.TextInputLayout>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonPostBeer"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_span="2"
+                android:paddingTop="15dp"
+                android:text="Save" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/viewResults"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="11dp"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/points" />
+
+
+            </RelativeLayout>
+        </TableRow>
+
+    </TableLayout>
+
+</android.support.design.widget.CoordinatorLayout>

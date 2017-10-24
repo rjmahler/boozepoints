@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">BoozePoints</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="app_greeting">Welcome to Booze Points!</string>
+    <string name="app_refresh">Refresh</string>
+    <string name="app_openorshare">Open or share link</string>
+    <string name="app_sharetext">%1$s on Booze Points\n%2$s</string>
+    <string name="share_edit_delete_title">Share, Edit or Delete the search tagged as \"%s\"</string>
+    <string name="delete_confirm">Are you sure?</string>
+    <string name="title_beer_detail">Beer Detail</string>
+    <string name="invalid_query_uri">Invalid query Uri:</string>
+    <string name="insert_failed">Insert failed: s</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="hint_beer_name">Enter beer name</string>
+    <string name="hint_location">Enter city,state (e.g.San Diego, CA)</string>
+
+    <string name="hint_abv">Enter ABV as a decimal percentage (no \'%\')</string>
+    <string name="hint_abv_proof">Enter proof as a whole value</string>
+
+    <string name="hint_vol">Enter volume in millilitres</string>
+    <string name="hint_vol_us_fl_oz">Enter volume in US fluid ounces</string>
+
+    <string name="hint_price">Enter price in dollars and cents</string>
+
+    <string name="search_hint">Search by beer name or location</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_up">Sign Up</string>
+    <string name="action_no_sign_in">Continue as guest</string>
+
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="cancel">Cancel</string>
+    <string name="heading_recent">RECENT</string>
+    <string name="heading_my_beers">MY BEERS</string>
+    <string name="heading_my_top_beers">MY TOP BEERS</string>
+
+    <string name="alcohol_unit_default">Alcohol by Volume(% ABV)</string>
+    <string name="alcohol_summary">Units used in display and calculations</string>
+    <string name="volume_unit_default">millilitres (ml)</string>
+    <string name="volume_summary">Units used in display and calculations</string>
+
+    <string name="menu_logout">Sign out</string>
+    <string name="menu_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
