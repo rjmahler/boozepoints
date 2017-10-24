@@ -1,6 +1,6 @@
 # boozepoints
 
-Beer app that lets the user find beers calculated into 'Booze Points' as measured by ABV, price and volume.
+Beer app that lets the user find and enter beers calculated into 'Booze Points' as measured by ABV, price and volume.
 
 This project uses Firebase as the database and authentication. Search feature is in progress.
 
