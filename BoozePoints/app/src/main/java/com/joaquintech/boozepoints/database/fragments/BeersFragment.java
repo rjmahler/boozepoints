@@ -32,12 +32,13 @@ import com.joaquintech.boozepoints.gui.MainActivity;
 
 public abstract class BeersFragment extends Fragment {
     private static final String TAG = "BeerListFragment";
+    private static final String SEARCH_QUERY="searchQuery";
 
-    private DatabaseReference mDatabase;
+    protected DatabaseReference mDatabase;
 
     protected FirebaseRecyclerAdapter<Beer, BeerViewHolder> mAdapter;
-    private RecyclerView mRecycler;
-    private LinearLayoutManager mManager;
+    protected RecyclerView mRecycler;
+    protected LinearLayoutManager mManager;
     
     public BeersFragment() {}
 
@@ -64,8 +65,11 @@ public abstract class BeersFragment extends Fragment {
         mManager.setStackFromEnd(true);
         mRecycler.setLayoutManager(mManager);
 
+        //String searchQuery = getActivity().getIntent().getStringExtra(SEARCH_QUERY);
+
         // Set up FirebaseRecyclerAdapter with the Query
-        final Query postsQuery = getQuery(mDatabase);
+        final Query postsQuery = /*searchQuery == null ? */ getQuery(mDatabase);// : getQuery(mDatabase).startAt(searchQuery).endAt(null).limitToFirst(100);
+
 
         mAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(Beer.class, R.layout.item_beer,
                 BeerViewHolder.class, postsQuery) {
@@ -93,29 +97,6 @@ public abstract class BeersFragment extends Fragment {
         mRecycler.setAdapter(mAdapter);
     }
 
-    /*
-    @Override
-    public void onCreateOptionsMenu (Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_main, menu);
-        MenuItem item = menu.findItem(R.id.app_bar_search);
-        SearchView sv = new SearchView(((MainActivity) getActivity()).getSupportActionBar().getThemedContext());
-        MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
-        MenuItemCompat.setActionView(item, sv);
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                System.out.println("search query submit");
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                System.out.println("tap");
-                return false;
-            }
-        });
-    }
-*/
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -124,34 +105,6 @@ public abstract class BeersFragment extends Fragment {
         }
     }
 
-    public void setAdapter(String query) {
-        Query queryRef = getQuery(FirebaseDatabase.getInstance().getReference()).startAt(query).endAt(query +"\uf8ff");
-
-        FirebaseRecyclerAdapter mAdapter = new FirebaseRecyclerAdapter<Beer, BeerViewHolder>(Beer.class, R.layout.item_beer,
-                BeerViewHolder.class, queryRef) {
-            @Override
-            protected void populateViewHolder(final BeerViewHolder viewHolder, final Beer model, final int position) {
-                final DatabaseReference beerRef = getRef(position);
-
-                final String beerKey = beerRef.getKey();
-                viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Launch BeerDetailActivity
-                        Intent intent = new Intent(getActivity(), BeerDetailActivity.class);
-                        intent.putExtra(BeerDetailActivity.EXTRA_BEER_KEY, beerKey);
-                    }
-                });
-
-                viewHolder.setOnItemClickListener(getOnItemClickListener());
-
-                viewHolder.bindToBeer(model);
-            }
-
-
-        };
-        mRecycler.setAdapter(mAdapter);
-    }
     public String getUid() {
         return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
@@ -159,12 +112,5 @@ public abstract class BeersFragment extends Fragment {
     public abstract Query getQuery(DatabaseReference databaseReference);
 
     public abstract AdapterView.OnItemClickListener getOnItemClickListener();
-
-    public  FirebaseRecyclerAdapter<Beer, BeerViewHolder> getAdapter() {return mAdapter;}
-
-    public  RecyclerView getRecyclerView() {
-
-        return mRecycler;
-    }
 
 }

@@ -12,9 +12,14 @@ import java.util.Map;
  */
 @IgnoreExtraProperties
 public class Beer {
+    //
     public String uid;
     public String name;
+    public String beer_type;
+    public String location_type;
 
+
+    // points related
     public float price;
     public float abv;
     public String location;

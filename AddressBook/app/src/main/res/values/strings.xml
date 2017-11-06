@@ -1,0 +1,32 @@
+<resources>
+   <string name="app_name">Booze Points Alternate</string>
+   <string name="menuitem_edit">Edit</string>
+   <string name="menuitem_delete">Delete</string>
+   <string name="hint_name_required">Name (Required)</string>
+   <string name="hint_price">Price</string>
+   <string name="hint_volume">Volume</string>
+   <string name="hint_abv">Alcohol by Volume (ABV)</string>
+   <string name="hint_country">Country</string>
+   <string name="hint_place">Bar, store or brewery</string>
+   <string name="hint_zip">Zip</string>
+   <string name="label_price">Price:</string>
+   <string name="label_volume">Volume:</string>
+   <string name="label_abv">Alcohol by Volume (ABV):</string>
+   <string name="label_street">Street:</string>
+   <string name="label_city">City:</string>
+   <string name="label_state">State:</string>
+   <string name="label_zip">Zip:</string>
+   <string name="confirm_title">Are you sure?</string>
+   <string name="confirm_message">This will delete the beer permanently!</string>
+   <string name="button_cancel">Cancel</string>
+   <string name="button_delete">Delete</string>
+   <string name="contact_added">Drink added successfully</string>
+   <string name="contact_not_added">Drink was not added due to an error</string>
+   <string name="contact_updated">Drink updated</string>
+   <string name="contact_not_updated">Drink was not updated due to an error</string>
+   <string name="invalid_query_uri">Invalid query Uri: </string>
+   <string name="invalid_insert_uri">Invalid insert Uri: </string>
+   <string name="invalid_update_uri">Invalid update Uri: </string>
+   <string name="invalid_delete_uri">Invalid delete Uri: </string>
+   <string name="insert_failed">Insert failed:</string>
+</resources>

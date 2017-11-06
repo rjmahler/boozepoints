@@ -11,4 +11,6 @@
     android:background="@drawable/background"
     app:layoutManager="LinearLayoutManager"
     tools:context="com.joaquintech.boozepoints.gui.NewBeerActivity"
-    tools:listitem="@layout/item_beer" />
+    tools:listitem="@layout/item_beer" >
+
+</android.support.v7.widget.RecyclerView>

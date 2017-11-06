@@ -45,7 +45,7 @@
     <string name="heading_recent">RECENT</string>
     <string name="heading_my_beers">MY BEERS</string>
     <string name="heading_my_top_beers">MY TOP BEERS</string>
-
+    <string name="heading_search_beers">SEARCH BEERS</string>
     <string name="alcohol_unit_default">Alcohol by Volume(% ABV)</string>
     <string name="alcohol_summary">Units used in display and calculations</string>
     <string name="volume_unit_default">millilitres (ml)</string>

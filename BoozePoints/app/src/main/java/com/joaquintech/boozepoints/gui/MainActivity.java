@@ -31,6 +31,7 @@ import com.joaquintech.boozepoints.database.fragments.BeersFragment;
 import com.joaquintech.boozepoints.database.fragments.MyBeersFragment;
 import com.joaquintech.boozepoints.database.fragments.MyTopBeersFragment;
 import com.joaquintech.boozepoints.database.fragments.RecentBeersFragment;
+import com.joaquintech.boozepoints.database.fragments.SearchBeersFragment;
 import com.joaquintech.boozepoints.database.models.Beer;
 import com.joaquintech.boozepoints.database.viewholder.BeerViewHolder;
 
@@ -40,6 +41,7 @@ import com.joaquintech.boozepoints.database.viewholder.BeerViewHolder;
 public class MainActivity extends BaseActivity {
 
     private static final String TAG = "MainActivity";
+    private static final String SEARCH_QUERY = "SearchQuery";
 
     private FragmentPagerAdapter mPagerAdapter;
     private ViewPager mViewPager;
@@ -55,12 +57,12 @@ public class MainActivity extends BaseActivity {
             private final Fragment[] mFragments = new Fragment[] {
                     new RecentBeersFragment(),
                     new MyBeersFragment(),
-                    new MyTopBeersFragment(),
+                    new SearchBeersFragment()
             };
             private final String[] mFragmentNames = new String[] {
                     getString(R.string.heading_recent),
                     getString(R.string.heading_my_beers),
-                    getString(R.string.heading_my_top_beers)
+                    getString(R.string.heading_search_beers)
             };
             @Override
             public Fragment getItem(int position) {
@@ -104,12 +106,6 @@ public class MainActivity extends BaseActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
 
-        SearchManager searchManager =
-                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        SearchView searchView = (SearchView) menu.findItem(R.id.app_bar_search).getActionView();
-        //searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(new ComponentName(this, SearchResultsActivity.class)));
-        searchView.setIconifiedByDefault(false); // Do not iconify the widget; expand it by default
         return true;
     }
 
@@ -140,18 +136,5 @@ public class MainActivity extends BaseActivity {
         else {
             return super.onOptionsItemSelected(item);
         }
-    }
-    protected void buildSearchListView(String query) {
-        /*
-        for(int i = 0; i < mPagerAdapter.getCount(); i++) {
-            final BeersFragment fragment = ((BeersFragment)mPagerAdapter.getItem(i));
-            //fragment.setAdapter(query);
-            Query queryRef = fragment.getQuery(FirebaseDatabase.getInstance().getReference()).startAt(query).endAt(query +"\uf8ff");
-
-
-        }
-
-        Log.d("Agenda", "Query " + query);
-        */
     }
 }
