@@ -15,6 +15,10 @@
 
         <TableRow
             android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <ImageView
@@ -22,12 +26,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/logo" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
         </TableRow>
 
@@ -54,6 +52,57 @@
                     android:textColorHint="@color/colorPrimaryLight"
                     android:textColorLink="@color/colorPrimaryLight"
                     tools:backgroundTint="@color/colorPrimaryLight" />
+
+            </android.support.design.widget.TextInputLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/beer_type_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat">
+
+                <EditText
+                    android:id="@+id/textType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:hint="@string/hint_type"
+                    android:inputType="textPersonName"
+                    android:maxLength="48"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
+            </android.support.design.widget.TextInputLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/beer_place_input_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/Theme.AppCompat">
+
+                <EditText
+                    android:id="@+id/textPlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/colorPrimaryLight"
+                    android:ems="10"
+                    android:hint="@string/hint_place"
+                    android:inputType="textPersonName"
+                    android:maxLength="48"
+                    android:textColor="@color/colorPrimaryLight"
+                    android:textColorHint="@color/colorPrimaryLight" />
             </android.support.design.widget.TextInputLayout>
         </TableRow>
 

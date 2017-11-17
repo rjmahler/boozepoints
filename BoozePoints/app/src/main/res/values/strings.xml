@@ -14,14 +14,14 @@
     <string name="title_activity_login">Sign in</string>
 
     <string name="hint_beer_name">Enter beer name</string>
-    <string name="hint_location">Enter city,state (e.g.San Diego, CA)</string>
+    <string name="hint_location">Enter city,state (ex: San Diego, CA)</string>
 
     <string name="hint_abv">Enter ABV as a decimal percentage (no \'%\')</string>
     <string name="hint_abv_proof">Enter proof as a whole value</string>
-
+    <string name="hint_type">Enter type of beer (ex: Amber,IPA)</string>
     <string name="hint_vol">Enter volume in millilitres</string>
     <string name="hint_vol_us_fl_oz">Enter volume in US fluid ounces</string>
-
+    <string name="hint_place">Enter place (ex: bar, store, brewery)</string>
     <string name="hint_price">Enter price in dollars and cents</string>
 
     <string name="search_hint">Search by beer name or location</string>

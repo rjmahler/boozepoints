@@ -88,7 +88,7 @@ public class SearchBeersFragment extends BeersFragment{
 
 
                 };
-                mRecycler.setAdapter(mAdapter);
+                mRecycler.swapAdapter(mAdapter,true);
             }
         });
         return rootView;
@@ -131,7 +131,7 @@ public class SearchBeersFragment extends BeersFragment{
 
 
         };
-        mRecycler.setAdapter(mAdapter);
+        mRecycler.swapAdapter(mAdapter,true);
     }
 
 /*
@@ -143,8 +143,14 @@ public class SearchBeersFragment extends BeersFragment{
     @Override
     public Query getQuery(DatabaseReference databaseReference) {
         if(query == null) {
-            String queryString = mSearchText.getText().toString().trim();
-            return queryString.isEmpty() ? databaseReference.child("beers").limitToFirst(100) : databaseReference.child("beers").orderByChild("name").startAt(queryString).endAt(queryString +"\uf8ff").limitToFirst(100);
+            String queryString = mSearchText.getText().toString().toUpperCase().trim();
+            StringBuilder queryBuilder = new StringBuilder();
+            for(String s : queryString.split("\\s+")){
+                queryBuilder.append(s.toUpperCase());
+                queryBuilder.append(" ");
+            }
+            String modQuery = queryBuilder.toString().trim();
+            return modQuery.isEmpty() ? databaseReference.child("beers").limitToFirst(100) : databaseReference.child("beers").orderByChild("searchable_name").startAt(modQuery).endAt(modQuery +"\uf8ff").limitToFirst(100);
         }
 
         return query;

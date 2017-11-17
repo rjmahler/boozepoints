@@ -43,6 +43,8 @@ public class NewBeerActivity extends BaseActivity {
     private static final String TAG = "NewBeerActivity";
     private TextInputLayout til;
     private static final int MAX_NAME_SIZE = 67;
+    private static final int MAX_TYPE_SIZE = 67;
+    private static final int MAX_PLACE_SIZE = 67;
     private static final float MAX_PRICE = 999.99f;
     private static final float MAX_ABV = 100.00f;
     private static final int MAX_SIZE_ML = 20000;
@@ -51,6 +53,8 @@ public class NewBeerActivity extends BaseActivity {
     private static final String ERROR_REQUIRED = "Required";
     private static final String ERROR_ZERO = "Cannot be zero";
     private static final String ERROR_NAME_SIZE = "Name cannot exceed " + MAX_NAME_SIZE + "characters";
+    private static final String ERROR_TYPE_SIZE = "Name cannot exceed " + MAX_TYPE_SIZE + "characters";
+    private static final String ERROR_PLACE_SIZE = "Name cannot exceed " + MAX_PLACE_SIZE + "characters";
     private static final String ERROR_LOCATION = "Invalid location";
     private static final String ERROR_ABV = "ABV cannot be greater than " + MAX_ABV;
     private static final String ERROR_ML = "Volume cannot be greater than " + MAX_SIZE_ML;
@@ -65,6 +69,8 @@ public class NewBeerActivity extends BaseActivity {
     // [END declare_database_ref]
 
     private EditText textName;
+    private EditText textType;
+    private EditText textPlace;
     private EditText textLocation;
     private EditText textPrice;
     private EditText textSize;
@@ -94,6 +100,8 @@ public class NewBeerActivity extends BaseActivity {
         }
 
         textName = (EditText) findViewById(R.id.textName);
+        textType = (EditText) findViewById(R.id.textType);
+        textPlace = (EditText) findViewById(R.id.textPlace);
         textLocation = (EditText) findViewById(R.id.textLocation);
         textPrice = (EditText) findViewById(R.id.textPrice);
         textABV = (EditText) findViewById(R.id.textABV);
@@ -147,6 +155,8 @@ public class NewBeerActivity extends BaseActivity {
                     // Get Post object and use the values to update the UI
                     Beer beer = dataSnapshot.getValue(Beer.class);
                     textName.setText(beer.name);
+                    textType.setText(beer.type);
+                    textPlace.setText(beer.place);
                     textLocation.setText(beer.location);
                     textPrice.setText((beer.price)+"");
                     textSize.setText(beer.vol_milliliters+"");
@@ -186,6 +196,8 @@ public class NewBeerActivity extends BaseActivity {
 
     private Beer getBeer(String mBeerKey) {
         final String name = textName.getText().toString().trim();
+        final String type = textType.getText().toString().trim();
+        final String place = textPlace.getText().toString().trim();
         final String location = textLocation.getText().toString().trim();
         final String price = textPrice.getText().toString().trim();
         final String ABV = textABV.getText().toString().trim();
@@ -197,6 +209,24 @@ public class NewBeerActivity extends BaseActivity {
         }
         if (TextUtils.getTrimmedLength(name) > MAX_NAME_SIZE) {
             textName.setError(this.ERROR_NAME_SIZE);
+            return null;
+        }
+
+        if (TextUtils.isEmpty(type)) {
+            textType.setError(ERROR_REQUIRED);
+            return null;
+        }
+        if (TextUtils.getTrimmedLength(type) > MAX_TYPE_SIZE) {
+            textType.setError(this.ERROR_TYPE_SIZE);
+            return null;
+        }
+
+        if (TextUtils.isEmpty(place)) {
+            textPlace.setError(ERROR_REQUIRED);
+            return null;
+        }
+        if (TextUtils.getTrimmedLength(place) > MAX_TYPE_SIZE) {
+            textPlace.setError(this.ERROR_TYPE_SIZE);
             return null;
         }
 
@@ -257,6 +287,9 @@ public class NewBeerActivity extends BaseActivity {
         Beer beer = new Beer();
         beer.location = location;
         beer.name = name;
+        beer.searchable_name = makeSearchableString(name);
+        beer.type = type;
+        beer.place = place;
         beer.vol_milliliters = i_size;
         beer.abv = f_ABV;
         beer.price = f_price;
@@ -264,6 +297,16 @@ public class NewBeerActivity extends BaseActivity {
         return beer;
     }
 
+    private static String makeSearchableString(String name) {
+        StringBuilder builder = new StringBuilder();
+
+        for(String s : name.split("\\s+")){
+            builder.append(s.toUpperCase());
+            builder.append(" ");
+        }
+
+        return builder.toString().trim();
+    }
     private void submitBeer(String mBeerKey, final Beer beer) {
 
         setEditingEnabled(false);

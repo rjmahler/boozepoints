@@ -51,6 +51,8 @@ public class BeerDetailActivity extends BaseActivity {
 
     private TextView viewPoints;
     private TextView viewName;
+    private TextView viewType;
+    private TextView viewPlace;
     private TextView viewPrice;
     private TextView viewSize;
     private TextView viewABV;
@@ -86,6 +88,8 @@ public class BeerDetailActivity extends BaseActivity {
         viewPrice = (TextView) findViewById(R.id.viewPrice);
         viewSize = (TextView) findViewById(R.id.viewSize);
         viewABV = (TextView) findViewById(R.id.viewABV);
+        viewType = (TextView) findViewById(R.id.viewType);
+        viewPlace = (TextView) findViewById(R.id.viewPlace);
         viewLocation = (TextView) findViewById(R.id.viewLocation);
         editBeer = (Button) findViewById(R.id.buttonEditBeer);
         editBeer.setVisibility(readOnly ? View.INVISIBLE : View.VISIBLE);
@@ -190,6 +194,12 @@ public class BeerDetailActivity extends BaseActivity {
 
                     viewLocation = (TextView) findViewById(R.id.viewLocation);
                     viewLocation.setText(beer.location);
+
+                    viewType = (TextView) findViewById(R.id.viewType);
+                    viewType.setText(beer.type);
+
+                    viewPlace = (TextView) findViewById(R.id.viewPlace);
+                    viewPlace.setText(beer.place);
 
                     viewPrice = (TextView) findViewById(R.id.viewPrice);
                     viewPrice.setText(currencyFormat.format(beer.price));

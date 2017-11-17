@@ -12,14 +12,14 @@ import java.util.Map;
  */
 @IgnoreExtraProperties
 public class Beer {
-    //
+
     public String uid;
     public String name;
-    public String beer_type;
-    public String location_type;
+    public String searchable_name;
+    public String type;
+    public String place;
 
 
-    // points related
     public float price;
     public float abv;
     public String location;
@@ -49,6 +49,9 @@ public class Beer {
         result.put("abv", abv);
         result.put("vol_milliliters",vol_milliliters);
         result.put("points", points);
+        result.put("type", type);
+        result.put("place", place);
+        result.put("searchable_name", searchable_name);
         return result;
     }
 }
