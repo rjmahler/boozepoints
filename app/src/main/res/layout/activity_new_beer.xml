@@ -45,9 +45,12 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorPrimaryLight"
                     android:ems="10"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:hint="@string/hint_beer_name"
                     android:inputType="textPersonName"
                     android:maxLength="63"
+                    android:nextFocusDown="@+id/beer_types_spinner"
                     android:textColor="@color/colorPrimaryLight"
                     android:textColorHint="@color/colorPrimaryLight"
                     android:textColorLink="@color/colorPrimaryLight"
@@ -60,25 +63,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/beer_type_input_layout"
+            <Spinner
+                android:id="@+id/beer_types_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/Theme.AppCompat">
+                android:backgroundTint="@color/colorPrimaryLight"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:nextFocusDown="@+id/textPlace"
+                android:nextFocusUp="@id/textName"
+                android:paddingBottom="15dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="15dp" />
 
-                <EditText
-                    android:id="@+id/textType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/colorPrimaryLight"
-                    android:ems="10"
-                    android:hint="@string/hint_type"
-                    android:inputType="textPersonName"
-                    android:maxLength="48"
-                    android:textColor="@color/colorPrimaryLight"
-                    android:textColorHint="@color/colorPrimaryLight" />
-            </android.support.design.widget.TextInputLayout>
         </TableRow>
 
         <TableRow
@@ -101,6 +98,9 @@
                     android:hint="@string/hint_place"
                     android:inputType="textPersonName"
                     android:maxLength="48"
+                    android:nextFocusUp="@id/beer_types_spinner"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
                     android:textColor="@color/colorPrimaryLight"
                     android:textColorHint="@color/colorPrimaryLight" />
             </android.support.design.widget.TextInputLayout>

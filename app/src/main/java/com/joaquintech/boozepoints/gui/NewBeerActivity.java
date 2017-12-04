@@ -8,9 +8,12 @@ import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +46,7 @@ public class NewBeerActivity extends BaseActivity {
     private static final String TAG = "NewBeerActivity";
     private TextInputLayout til;
     private static final int MAX_NAME_SIZE = 67;
-    private static final int MAX_TYPE_SIZE = 67;
+   // private static final int MAX_TYPE_SIZE = 67;
     private static final int MAX_PLACE_SIZE = 67;
     private static final float MAX_PRICE = 999.99f;
     private static final float MAX_ABV = 100.00f;
@@ -51,9 +54,10 @@ public class NewBeerActivity extends BaseActivity {
     private static final float MAX_US_OZ = 700;
     private static final float MAX_UK_OZ = 700;
     private static final String ERROR_REQUIRED = "Required";
+    private static final String ERROR_NO_SELECTION = "Please make a selection";
     private static final String ERROR_ZERO = "Cannot be zero";
     private static final String ERROR_NAME_SIZE = "Name cannot exceed " + MAX_NAME_SIZE + "characters";
-    private static final String ERROR_TYPE_SIZE = "Name cannot exceed " + MAX_TYPE_SIZE + "characters";
+  //  private static final String ERROR_TYPE_SIZE = "Name cannot exceed " + MAX_TYPE_SIZE + "characters";
     private static final String ERROR_PLACE_SIZE = "Name cannot exceed " + MAX_PLACE_SIZE + "characters";
     private static final String ERROR_LOCATION = "Invalid location";
     private static final String ERROR_ABV = "ABV cannot be greater than " + MAX_ABV;
@@ -76,6 +80,8 @@ public class NewBeerActivity extends BaseActivity {
     private EditText textSize;
     private EditText textABV;
     private TextView textPoints;
+    private Spinner beerTypesSpinner;
+    private ImageView image;
 
     private String mBeerKey;
     private Button mSubmitButton;
@@ -100,7 +106,26 @@ public class NewBeerActivity extends BaseActivity {
         }
 
         textName = (EditText) findViewById(R.id.textName);
-        textType = (EditText) findViewById(R.id.textType);
+       // textType = (EditText) findViewById(R.id.textType);
+        beerTypesSpinner = (Spinner) findViewById(R.id.beer_types_spinner);
+       // beerTypesSpinner.setFocusable(true);
+       // beerTypesSpinner.setFocusableInTouchMode(true);
+       // beerTypesSpinner.requestFocus();
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.beer_types, R.layout.spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        beerTypesSpinner.setAdapter(adapter);
+        beerTypesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         textPlace = (EditText) findViewById(R.id.textPlace);
         textLocation = (EditText) findViewById(R.id.textLocation);
         textPrice = (EditText) findViewById(R.id.textPrice);
@@ -155,7 +180,8 @@ public class NewBeerActivity extends BaseActivity {
                     // Get Post object and use the values to update the UI
                     Beer beer = dataSnapshot.getValue(Beer.class);
                     textName.setText(beer.name);
-                    textType.setText(beer.type);
+                   // textType.setText(beer.type);
+                    beerTypesSpinner.setSelection(((ArrayAdapter<String>)beerTypesSpinner.getAdapter()).getPosition(beer.type));
                     textPlace.setText(beer.place);
                     textLocation.setText(beer.location);
                     textPrice.setText((beer.price)+"");
@@ -196,7 +222,9 @@ public class NewBeerActivity extends BaseActivity {
 
     private Beer getBeer(String mBeerKey) {
         final String name = textName.getText().toString().trim();
-        final String type = textType.getText().toString().trim();
+//        final String type = textType.getText().toString().trim();
+        int typeIndex = beerTypesSpinner.getSelectedItemPosition();
+        final String type = beerTypesSpinner.getSelectedItem().toString();
         final String place = textPlace.getText().toString().trim();
         final String location = textLocation.getText().toString().trim();
         final String price = textPrice.getText().toString().trim();
@@ -207,17 +235,15 @@ public class NewBeerActivity extends BaseActivity {
             textName.setError(ERROR_REQUIRED);
             return null;
         }
+
         if (TextUtils.getTrimmedLength(name) > MAX_NAME_SIZE) {
             textName.setError(this.ERROR_NAME_SIZE);
             return null;
         }
 
-        if (TextUtils.isEmpty(type)) {
-            textType.setError(ERROR_REQUIRED);
-            return null;
-        }
-        if (TextUtils.getTrimmedLength(type) > MAX_TYPE_SIZE) {
-            textType.setError(this.ERROR_TYPE_SIZE);
+        if (typeIndex == 0) {
+           // beerTypesSpinner.setError(ERROR_NO_SELECTION);
+            ((TextView)beerTypesSpinner.getChildAt(0)).setError(ERROR_NO_SELECTION);
             return null;
         }
 
@@ -225,8 +251,9 @@ public class NewBeerActivity extends BaseActivity {
             textPlace.setError(ERROR_REQUIRED);
             return null;
         }
-        if (TextUtils.getTrimmedLength(place) > MAX_TYPE_SIZE) {
-            textPlace.setError(this.ERROR_TYPE_SIZE);
+
+        if (TextUtils.getTrimmedLength(place) > MAX_PLACE_SIZE) {
+            textPlace.setError(this.ERROR_PLACE_SIZE);
             return null;
         }
 

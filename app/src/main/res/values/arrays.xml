@@ -19,4 +19,46 @@
         <item>A</item>
         <item>B</item>
     </string-array>
+
+    <string-array name="beer_types">
+        <item>Select a Type</item>
+        <item>Pale Ale</item>
+        <item>Lager</item>
+        <item>Pilsner</item>
+        <item>Wheat Beer</item>
+        <item>Golden Ale</item>
+        <item>Dark Ale</item>
+        <item>Porter</item>
+        <item>Stout</item>
+        <item>Imperial Stout</item>
+        <item>Other</item>
+    </string-array>
+<!--
+    <string-array name="beer_types">
+        <item>Select a Type</item>
+        <item>Ale</item>
+        <item>Lager</item>
+        <item>Stout</item>
+        <item>Porter</item>
+        <item>Malt</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="beer_styles">
+        <item>Select a Style</item>
+        <item>Amber</item>
+        <item>Barley</item>
+        <item>Blonde</item>
+        <item>Brown</item>
+        <item>Cream</item>
+        <item>Dunkel</item>
+        <item>IPA</item>
+        <item>Light</item>
+        <item>Mild</item>
+        <item>Old</item>
+        <item>Pale Ale</item>
+        <item>Red</item>
+        <item>Other</item>
+    </string-array>
+    -->
 </resources>
